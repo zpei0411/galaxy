@@ -47,11 +47,6 @@ var NumberRomanMap = map[int]string{
 	I:  "I",
 }
 
-type Roman struct {
-	name  string
-	alias string
-}
-
 func RomanToNum(roman string) (int, error) {
 	err := verfy(roman)
 	if err != nil {
