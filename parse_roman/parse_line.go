@@ -9,15 +9,14 @@ import (
 
 func HandleLine(line string, wordMap map[string]string, corrency map[string]int) (string, error) {
 	romanArray := strings.Split(line, " ")
-	//1
-	_, ok := roman.RomanNumberMap[line[len(line)-1]]
-	if ok {
-		wordMap[romanArray[0]] = romanArray[len(romanArray)-1]
-		return "", nil
-	}
 
-	//2
-	if romanArray[len(romanArray)-1] == "Credits" {
+	if len(romanArray) == 3 {
+		_, ok := roman.RomanNumberMap[line[len(line)-1]]
+		if ok {
+			wordMap[romanArray[0]] = romanArray[len(romanArray)-1]
+			return "", nil
+		}
+	} else if len(romanArray) == 6 && romanArray[len(romanArray)-1] == "Credits" {
 
 		tempStr := wordMap[romanArray[0]] + wordMap[romanArray[1]]
 		tempNum, err := roman.RomanToNum(tempStr)
@@ -30,11 +29,7 @@ func HandleLine(line string, wordMap map[string]string, corrency map[string]int)
 		}
 		corrency[romanArray[2]] = money / tempNum
 		return "", nil
-	}
-
-	// 3
-
-	if romanArray[len(romanArray)-1] == "?" {
+	} else if romanArray[0] == "how" && romanArray[len(romanArray)-1] == "?" {
 		tempstr1 := ""
 		tempstr2 := ""
 		if romanArray[1] == "much" && romanArray[2] == "is" {
