@@ -6,7 +6,7 @@ import (
 	"io"
 	"os"
 
-	"test/thoughtworks/galaxy/parse_roman"
+	"galaxy/parse_roman"
 )
 
 func main() {

@@ -2,9 +2,9 @@ package parse_roman
 
 import (
 	"fmt"
+	"galaxy/roman"
 	"strconv"
 	"strings"
-	"test/thoughtworks/galaxy/roman"
 )
 
 func HandleLine(line string, wordMap map[string]string, corrency map[string]int) (string, error) {
